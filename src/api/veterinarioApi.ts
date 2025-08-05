@@ -33,7 +33,8 @@ export async function deleteVeterinario (veterinarioId : Veterinario['id']) {
 
 export async function updateVeterinario(formData : VeterinarioRegisterForm, veterinarioId : Veterinario['id']) {
     try {
-                
+        console.log(formData)
+        console.log(veterinarioId)
     } catch (error) {
         console.log(error)
     }

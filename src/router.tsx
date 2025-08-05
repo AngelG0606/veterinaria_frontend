@@ -7,6 +7,7 @@ import AppLayout from './layouts/AppLayout'
 import Dashboard from './views/Dashboard'
 import UsersView from './views/users/UsersView'
 import VeterinariosView from './views/veterinarios/VeterinariosView'
+import MascotasView from './views/mascotas/MascotasView'
 
 
 export default function Router() {
@@ -25,6 +26,7 @@ export default function Router() {
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/users' element={<UsersView />} />
               <Route path='/veterinarios' element={<VeterinariosView />} />
+              <Route path='/mascotas' element={<MascotasView />} />
             </Route>
 
         </Routes>

@@ -22,3 +22,12 @@ export async function login(formData : UserLoginForm) {
         console.log(error)   
     }
 }
+
+
+export async function getUser() {
+    try {
+        
+    } catch (error) {
+        console.log(error)
+    }
+}

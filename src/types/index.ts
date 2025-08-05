@@ -11,6 +11,11 @@ export const UserSchema = z.object({
     password_confirmation: z.string(),
 })
 
+export type User = z.infer<typeof UserSchema>
+export type UserRegisterForm = Pick<User, 'name' | 'lastname' | 'telefono' | 'email' | 'password' | 'password_confirmation'>
+export type UserLoginForm = Pick<User,  'email' | 'password'>
+export type UserGet = Pick<User, 'id' | 'name' | 'lastname' | 'telefono' | 'email' | 'password' | 'status'>
+
 export const VeterinarioSchema = z.object({
     id : z.number(),
     name: z.string(),
@@ -25,12 +30,19 @@ export const VeterinarioSchema = z.object({
 
 export const VeterinariosResponseSchema = z.array(VeterinarioSchema)
 
-
-export type User = z.infer<typeof UserSchema>
-export type UserRegisterForm = Pick<User, 'name' | 'lastname' | 'telefono' | 'email' | 'password' | 'password_confirmation'>
-export type UserLoginForm = Pick<User,  'email' | 'password'>
-export type UserGet = Pick<User, 'id' | 'name' | 'lastname' | 'telefono' | 'email' | 'password' | 'status'>
-
 export type Veterinario = z.infer<typeof VeterinarioSchema>
 export type VeterinarioRegisterForm = Pick<Veterinario, 'name' | 'lastname' | 'especialidad' | 'rfc' | 'telefono' | 'email' | 'password' | 'password_confirmation'>
 export type VeterinarioResponse = z.infer<typeof VeterinariosResponseSchema>
+
+
+export const MascotaSchema = z.object({
+    id : z.number(),
+    name : z.string(),
+    especie : z.string(),
+    raza : z.string(),
+    color : z.string(),
+    weight : z.string(),
+    userId : z.number(),
+})
+
+export type Mascota = z.infer<typeof MascotaSchema>
