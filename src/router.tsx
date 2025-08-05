@@ -3,6 +3,10 @@ import Home from './views/Home'
 import AuthLayout from './layouts/AuthLayout'
 import Register from './views/auth/Register'
 import Login from './views/auth/Login'
+import AppLayout from './layouts/AppLayout'
+import Dashboard from './views/Dashboard'
+import UsersView from './views/users/UsersView'
+import VeterinariosView from './views/veterinarios/VeterinariosView'
 
 
 export default function Router() {
@@ -15,6 +19,12 @@ export default function Router() {
             <Route element={<AuthLayout />}>
                 <Route path='/auth/register' element={<Register />} />
                 <Route path='/auth/login' element={<Login />} />
+            </Route>
+
+            <Route element={<AppLayout />}>
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/users' element={<UsersView />} />
+              <Route path='/veterinarios' element={<VeterinariosView />} />
             </Route>
 
         </Routes>

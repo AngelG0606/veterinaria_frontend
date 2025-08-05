@@ -1,9 +1,14 @@
 import { useForm } from "react-hook-form"
 import type { UserRegisterForm } from "../../types"
 import ErrorMessage from "../ErrorMessage"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useMutation } from '@tanstack/react-query'
+import { createAccount } from "../../api/authApi"
+import { toast } from "react-toastify"
 
 export default function RegisterForm() {
+
+    const navigate = useNavigate()
 
     const initialValues : UserRegisterForm = {
         name : '',
@@ -17,8 +22,19 @@ export default function RegisterForm() {
 
     const password = watch('password')
 
-    const handleRegisterForm = async () => {
-        
+    const { mutate } = useMutation({
+        mutationFn : createAccount,
+        onError: () => {
+            
+        },
+        onSuccess : (data) => {
+            toast.success(data)
+            navigate('/auth/login')
+        }
+    })
+
+    const handleRegisterForm = async (formData : UserRegisterForm) => {
+        mutate(formData)   
     }
 
   return (

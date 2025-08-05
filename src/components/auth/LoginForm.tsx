@@ -1,10 +1,14 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
 import type { UserLoginForm } from "../../types";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "../../api/authApi";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
-
+    
+    const navigate = useNavigate()
     const initialValues : UserLoginForm = {
         email : '',
         password : ''
@@ -12,8 +16,19 @@ export default function LoginForm() {
 
     const {register, handleSubmit, formState : {errors}} = useForm<UserLoginForm>({defaultValues : initialValues})
 
-    const handleLoginSubmit = () => {
+    const {mutate} = useMutation({
+        mutationFn : login,
+        onError: () => {
+            toast.error('Hubo un error al autenticar al usuario')
+        },
+        onSuccess: () => {
+            toast.success('Usuario autenticado correctamente')
+            navigate('/dashboard')
+        }
+    })
 
+    const handleLoginSubmit = (formData : UserLoginForm) => {
+        mutate(formData)
     }
 
   return (

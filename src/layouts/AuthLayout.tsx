@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Title from "../components/utils/Title";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function AuthLayout() {
   return (
@@ -18,6 +20,10 @@ export default function AuthLayout() {
           </div>
         </div>
 
+        <ToastContainer 
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+        />
     </>
   )
 }
