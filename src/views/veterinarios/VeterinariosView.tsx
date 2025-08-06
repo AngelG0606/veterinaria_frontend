@@ -5,6 +5,7 @@ import { deleteVeterinario, getAllVets } from "../../api/veterinarioApi";
 import AddVeterinarioModal from "../../components/veterinarios/AddVeterinarioModal";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function VeterinariosView() {
 
@@ -101,11 +102,11 @@ export default function VeterinariosView() {
               >
                 Eliminar
               </button>
-              <button 
+              <Link to={`/veterinarios/${veterinario.id}`}
                 className="cursor-pointer text-blue-600 font-bold hover:bg-blue-600 hover:text-white px-2 py-1"
               >
                 Editar
-              </button>
+              </Link>
             </div>
           </div>
         </div>

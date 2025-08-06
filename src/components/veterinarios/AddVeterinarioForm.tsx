@@ -25,6 +25,7 @@ export default function AddVeterinarioForm({setOpenModal} : AddVeterinarioFormPr
     const {register, handleSubmit, watch, formState : {errors}} = useForm<VeterinarioRegisterForm>({defaultValues : initialValues})
 
     const password = watch('password')
+    
 
     const { mutate } = useMutation({
         mutationFn : createVeterinario,

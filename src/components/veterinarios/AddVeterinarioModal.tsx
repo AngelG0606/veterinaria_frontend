@@ -43,7 +43,7 @@ export default function AddVeterinarioModal({openModal, setOpenModal} : AddVeter
                         as="h3"
                         className="text-lg font-medium leading-6 text-gray-900"
                     >
-                        Título del Modal
+                        Agregar nuevo veterinario
                     </Dialog.Title>
                         <AddVeterinarioForm
                             setOpenModal={setOpenModal}

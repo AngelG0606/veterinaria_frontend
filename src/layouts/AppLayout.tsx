@@ -1,12 +1,14 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import { ToastContainer } from "react-toastify";
 import Sidebar from "../components/app/Sidebar";
 
 export default function AppLayout() {
+    const navigate = useNavigate()
 
     const logout = () => {
-        localStorage.removeItem('AUTH_TOKEN')   
+        localStorage.removeItem('AUTH_TOKEN')
+        navigate('/auth/login')   
     }
 
   return (

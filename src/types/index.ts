@@ -45,4 +45,8 @@ export const MascotaSchema = z.object({
     userId : z.number(),
 })
 
+export const MascotaSchemaResponse = z.array(MascotaSchema)
+
 export type Mascota = z.infer<typeof MascotaSchema>
+export type MascotaRegisterForm = Pick<Mascota, 'name' | 'especie' | 'raza' | 'color' | 'weight'>
+export type MascotasResponse = z.infer<typeof MascotaSchemaResponse>

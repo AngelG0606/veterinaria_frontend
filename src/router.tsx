@@ -8,6 +8,8 @@ import Dashboard from './views/Dashboard'
 import UsersView from './views/users/UsersView'
 import VeterinariosView from './views/veterinarios/VeterinariosView'
 import MascotasView from './views/mascotas/MascotasView'
+import Editveterinario from './views/veterinarios/Editveterinario'
+import CitasView from './views/citas/CitasView'
 
 
 export default function Router() {
@@ -26,7 +28,9 @@ export default function Router() {
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/users' element={<UsersView />} />
               <Route path='/veterinarios' element={<VeterinariosView />} />
+              <Route path='/veterinarios/:veterinarioId' element={<Editveterinario />} />
               <Route path='/mascotas' element={<MascotasView />} />
+              <Route path='/citas' element={<CitasView />} />
             </Route>
 
         </Routes>

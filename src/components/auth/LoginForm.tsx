@@ -18,11 +18,12 @@ export default function LoginForm() {
 
     const {mutate} = useMutation({
         mutationFn : login,
-        onError: () => {
+        onError: (error) => {
             toast.error('Hubo un error al autenticar al usuario')
+            toast.error(error.message)
         },
-        onSuccess: () => {
-            toast.success('Usuario autenticado correctamente')
+        onSuccess: (data) => {
+            toast.success(data)
             navigate('/dashboard')
         }
     })
@@ -34,7 +35,7 @@ export default function LoginForm() {
   return (
     <>
         <form
-         className="bg-white shadow rounded space-y-5 px-5 mt-10 py-5"
+         className="bg-white shadow-2xl rounded space-y-5 px-5 mt-10 py-5"
             onSubmit={handleSubmit(handleLoginSubmit)}
             noValidate
         >

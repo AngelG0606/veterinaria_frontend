@@ -11,6 +11,16 @@ export async function getAllVets() {
     }
 }
 
+export async function getVeterinarioById (veterinarioId  : Veterinario['id']) {
+    try {
+        const url = `/vet/veterinarios/${veterinarioId}`
+        const { data } = await api.get<Veterinario>(url)
+        return data        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export async function createVeterinario (formData : VeterinarioRegisterForm) {
     try {
         const url = `/vet/create-account`
@@ -31,10 +41,11 @@ export async function deleteVeterinario (veterinarioId : Veterinario['id']) {
     }
 }
 
-export async function updateVeterinario(formData : VeterinarioRegisterForm, veterinarioId : Veterinario['id']) {
+export async function updateVeterinario({formData, veterinarioId} : {formData : VeterinarioRegisterForm, veterinarioId : Veterinario['id']}) {
     try {
-        console.log(formData)
-        console.log(veterinarioId)
+        const url = `/vet/veterinarios/${veterinarioId}`
+        const  { data } = await api.put<string>(url, formData)
+        return data
     } catch (error) {
         console.log(error)
     }
