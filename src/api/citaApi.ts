@@ -16,6 +16,6 @@ export async function updateCita() {
 
 }
 
-export async function deleteCita() {
-    
+export async function cancelCita() {
+
 }
