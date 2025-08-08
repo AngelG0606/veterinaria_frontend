@@ -50,3 +50,17 @@ export const MascotaSchemaResponse = z.array(MascotaSchema)
 export type Mascota = z.infer<typeof MascotaSchema>
 export type MascotaRegisterForm = Pick<Mascota, 'name' | 'especie' | 'raza' | 'color' | 'weight'>
 export type MascotasResponse = z.infer<typeof MascotaSchemaResponse>
+
+export const CitaSchema = z.object({
+    id : z.number(),
+    fecha : z.date(),
+    hora : z.date(),
+    price : z.number(),
+    status : z.boolean(),
+    userId : z.number(),
+})
+
+export const CitasResponseSchema = z.array(CitaSchema)
+
+export type Cita = z.infer<typeof CitaSchema>
+export type CitasResponse = z.infer<typeof CitasResponseSchema>

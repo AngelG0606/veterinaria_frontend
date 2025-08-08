@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CitaCard from "../../components/citas/CitaCard";
 import Title from "../../components/utils/Title";
 import CitaModal from "../../components/citas/CitaModal";
+import type { Cita } from "../../types";
+import { getAllCitas } from "../../api/citaApi";
 
 
 export default function CitasView() {
 
      const [openModal, setOpenModal] = useState(false)
+     const [citas, setCitas] = useState<Cita[]>([])
+
+     useEffect(() => {
+        const getCitas = async () => {
+            try {
+                const response = await getAllCitas()
+                if(response) {
+                    setCitas(response)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getCitas()
+     }, [])
 
   return (
     <>
@@ -32,7 +49,9 @@ export default function CitasView() {
             setOpenModal={setOpenModal}
         /> 
 
-        <CitaCard /> 
+        <CitaCard 
+            citas={citas}
+        /> 
     </>
   )
 }
